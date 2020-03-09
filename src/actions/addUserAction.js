@@ -1,6 +1,6 @@
 import request from "superagent";
 
-const baseUrl = "http://localhost:4000";
+const baseUrl = "http://localhost:4001";
 
 export const ADD_USER = "ADD_USER";
 function newUser(payload) {

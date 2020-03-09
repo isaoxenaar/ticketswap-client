@@ -1,20 +1,22 @@
 import request from "superagent";
-const baseUrl = "http:/localhost:4000";
+const baseUrl = "http://localhost:4001";
 
 export const JWT = "JWT";
 function newLogin(payload) {
+  console.log("this is payload", payload);
   return {
     type: JWT,
     payload
   };
 }
 export const checkLogin = data => dispatch => {
+  console.log("This is working too", data);
   request
     .post(`${baseUrl}/login`)
     .send(data)
     .then(response => {
+      console.log("this is response", response);
       const action = newLogin(response.body.jwt);
-      console.log("this is response", response.body.jwt);
       dispatch(action);
     })
     .catch(console.error);
