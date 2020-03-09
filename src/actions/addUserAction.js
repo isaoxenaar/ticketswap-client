@@ -1,6 +1,9 @@
 import request from "superagent";
 import { baseUrl } from "./constants";
 export const ADD_USER = "ADD_USER";
+
+stream = new EventSource(`${baseUrl}/stream`);
+
 function newUser(payload) {
   return {
     type: ADD_USER,
