@@ -5,10 +5,11 @@ import SignUpContainer from "./SignUpFormContainer";
 
 class HomeContainer extends React.Component {
   render() {
-    console.log("this page loaded");
+    console.log("this page loaded", LoginFormContainer, "x");
     return (
       <div>
         <LoginFormContainer />
+
         <SignUpContainer />
       </div>
     );

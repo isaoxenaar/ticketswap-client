@@ -1,6 +1,5 @@
 import request from "superagent";
-const baseUrl = "http://localhost:4001";
-
+import { baseUrl } from "./constants";
 export const JWT = "JWT";
 function newLogin(payload) {
   console.log("this is payload", payload);

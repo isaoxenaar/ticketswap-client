@@ -18,14 +18,37 @@ class LoginFormContainer extends React.Component {
   };
 
   render() {
-    return (
-      <LoginForm
-        onSubmit={this.onSubmit}
-        onChange={this.onChange}
-        values={this.state}
-      />
-    );
+    console.log("What is this", this.props.loggedInUser);
+    if (this.props.loggedInUser) {
+      return (
+        <div>
+          <LoginForm
+            onSubmit={this.onSubmit}
+            onChange={this.onChange}
+            values={this.state}
+          />
+          you are logged in
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <LoginForm
+            onSubmit={this.onSubmit}
+            onChange={this.onChange}
+            values={this.state}
+          />
+          you have to log in
+        </div>
+      );
+    }
   }
 }
-
-export default connect(null, { checkLogin })(LoginFormContainer);
+function mapStateToProps(state) {
+  console.log("this is state", state);
+  return {
+    signedUpUsers: state.signedUpUsers,
+    loggedInUser: state.loggedInUser
+  };
+}
+export default connect(mapStateToProps, { checkLogin })(LoginFormContainer);
