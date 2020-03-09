@@ -5,16 +5,18 @@ import SignUpContainer from "./SignUpFormContainer";
 
 class HomeContainer extends React.Component {
   render() {
-    console.log("this page loaded", LoginFormContainer, "x");
     return (
       <div>
         <LoginFormContainer />
-
         <SignUpContainer />
+        {this.props.signedUpUsers.map(user => {
+          return <p key={user.password}>{user.email}</p>;
+        })}
       </div>
     );
   }
 }
+
 function mapStateToProps(state) {
   return {
     signedUpUsers: state.signedUpUsers,
