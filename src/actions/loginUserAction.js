@@ -1,8 +1,7 @@
 import request from "superagent";
 import { baseUrl } from "./constants";
-export const JWT = "JWT";
 
-stream = new EventSource(`${baseUrl}/stream`);
+export const JWT = "JWT";
 
 function newLogin(payload) {
   console.log("this is payload", payload);
@@ -11,6 +10,7 @@ function newLogin(payload) {
     payload
   };
 }
+
 export const checkLogin = data => dispatch => {
   console.log("This is working too", data);
   request
