@@ -9,11 +9,17 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div>
+        <main>
           <Route exact path="/" component={HomeContainer} />
           <Route exact path="/events" component={EventContainer} />
           <Route exact path="/events/:id" component={EventContainer} />
-        </div>
+          <Route exact path="/events/:page" component={EventContainer} />
+          <Route exact path="/events/:id/:page" component={EventContainer} />
+          <Route exact path="/events/:id/:event" />
+          <Route exact path="/events/:event" />
+          <Route exact path="/events/:id/:event/:ticket" />
+          <Route exact path="/events/:event/:ticket" />
+        </main>
       </Provider>
     );
   }
