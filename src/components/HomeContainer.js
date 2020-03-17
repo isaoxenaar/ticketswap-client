@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import LoginFormContainer from "./LoginFormContainer";
 import SignUpContainer from "./SignUpFormContainer";
+import EventContainer from "./EventContainer";
 
 class HomeContainer extends React.Component {
   render() {
@@ -9,6 +10,7 @@ class HomeContainer extends React.Component {
       <div>
         <LoginFormContainer />
         <SignUpContainer />
+        <p>these are current signedup users</p>
         {this.props.signedUpUsers.map(user => {
           return <p key={user.password}>{user.email}</p>;
         })}
@@ -19,6 +21,7 @@ class HomeContainer extends React.Component {
 
 function mapStateToProps(state) {
   return {
+    events: state.events,
     signedUpUsers: state.signedUpUsers,
     loggedInUser: state.loggedInUser
   };

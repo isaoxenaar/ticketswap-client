@@ -34,6 +34,7 @@ class SignUpContainer extends React.Component {
 function mapStateToProps(state) {
   console.log("this is state", state);
   return {
+    events: state.events,
     signedUpUsers: state.signedUpUsers,
     loggedInUser: state.loggedInUser
   };
