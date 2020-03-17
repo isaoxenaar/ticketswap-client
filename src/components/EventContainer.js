@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createEvent } from "../actions/createEventAction";
+import { getEvents } from "../actions/allEventsAction";
 import EventForm from "./EventForm";
 
 class CreateEventContainer extends React.Component {
@@ -9,6 +10,9 @@ class CreateEventContainer extends React.Component {
     pictureurl: "",
     description: "",
     enddate: ""
+  };
+  componentDidMount = () => {
+    this.props.getEvents();
   };
 
   onChange = event => {
@@ -36,6 +40,7 @@ class CreateEventContainer extends React.Component {
 
   render() {
     console.log("this is events", this.props.events);
+    console.log("this is jwt in eventform", this.props.events);
     return (
       <div>
         <EventForm
@@ -49,7 +54,7 @@ class CreateEventContainer extends React.Component {
   }
 }
 
-const mapDispatchToProps = { createEvent };
+const mapDispatchToProps = { createEvent, getEvents };
 
 function mapStateToProps(state) {
   console.log("this is state", state);
