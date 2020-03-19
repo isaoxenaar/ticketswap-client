@@ -10,7 +10,7 @@ export default class SignUpForm extends React.Component {
               placeholder="email"
               name="email"
               onChange={this.props.onChange}
-              value={this.props.state}
+              value={this.props.values.email}
               type="text"
             />
           </label>
@@ -20,7 +20,7 @@ export default class SignUpForm extends React.Component {
               placeholder="password"
               name="password"
               onChange={this.props.onChange}
-              value={this.props.state}
+              value={this.props.values.password}
               type="text"
             />
           </label>

@@ -1,23 +1,25 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { updateImage } from "../actions/edit_Image";
+import { updateTicket } from "../actions/editTicketAction";
 
-class EditImageForm extends Component {
+class EditticketForm extends Component {
   state = {
-    url: "",
-    title: ""
+    logo: "",
+    price: "",
+    description: ""
   };
 
   onSubmit = event => {
     event.preventDefault();
     const update = {
-      url: this.state.url,
-      title: this.state.title
+      logo: this.state.logo,
+      price: this.state.price,
+      description: this.state.description
     };
 
-    this.props.updateImage(this.props.imageId, update);
+    this.props.updateTicket(this.props.ticketId, update);
 
-    console.log("submit test", this.props.imageId, update);
+    console.log("submit test", this.props.ticketId, update);
   };
 
   onChange = event => {
@@ -37,7 +39,7 @@ class EditImageForm extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         <div>
-          Url{" "}
+          Logo Url{" "}
           <input
             type="text"
             name="url"
@@ -46,7 +48,16 @@ class EditImageForm extends Component {
           />
         </div>
         <div>
-          Title{" "}
+          Price{" "}
+          <input
+            type="text"
+            name="title"
+            value={this.state.title}
+            onChange={this.onChange}
+          />
+        </div>
+        <div>
+          Description{" "}
           <input
             type="text"
             name="title"

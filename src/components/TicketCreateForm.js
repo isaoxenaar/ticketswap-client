@@ -10,7 +10,7 @@ export default class Form extends React.Component {
             <input
               placeholder="logo"
               name="logo"
-              value={this.props.state}
+              value={this.props.value.logo}
               onChange={this.props.onChange}
               type="text"
             />
@@ -20,7 +20,7 @@ export default class Form extends React.Component {
             <input
               placeholder="description"
               name="description"
-              value={this.props.state}
+              value={this.props.values.description}
               onChange={this.props.onChange}
               type="text"
             />
@@ -30,7 +30,7 @@ export default class Form extends React.Component {
             <input
               placeholder="price"
               name="price"
-              value={this.props.state}
+              value={this.props.values.price}
               onChange={this.props.onChange}
               type="text"
             />

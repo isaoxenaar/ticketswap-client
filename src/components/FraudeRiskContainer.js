@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { connect } from "react-redux";
 import { getTickets } from "../actions/allTicketsAction";
 import { getEvents } from "../actions/allEventsAction";
@@ -12,6 +12,10 @@ class FraudeRisk extends React.Component {
   };
 
   render() {
+    // this.props.tickets.filter(ticket =>
+    //     {
+    //         ticket.userId === user.id
+    //     }
     return <main>{`The FraudeRisk for this ticket is`}</main>;
   }
 }
@@ -27,4 +31,5 @@ function mapStateToProps(state) {
     loggedInUser: state.loggedInUser
   };
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(FraudeRisk);
