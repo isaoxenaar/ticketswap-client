@@ -1,32 +1,33 @@
 import React from "react";
+
 export default class SignUpForm extends React.Component {
   render() {
     return (
-      <div>
+      <main>
         <form onSubmit={this.props.onSubmit}>
           <label>
-            sign-up email
+            Signup email{" "}
             <input
               placeholder="email"
               name="email"
               onChange={this.props.onChange}
               value={this.props.values.email}
               type="text"
-            />
+            />{" "}
           </label>
           <label>
-            sign-up password
+            Signup password{" "}
             <input
               placeholder="password"
               name="password"
               onChange={this.props.onChange}
               value={this.props.values.password}
               type="text"
-            />
+            />{" "}
           </label>
-          <button>add</button>
+          <button>Sign Up</button>
         </form>
-      </div>
+      </main>
     );
   }
 }

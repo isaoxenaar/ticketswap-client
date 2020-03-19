@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
-import signedUpUsers from "./addUserReducer";
+import signedUpUsers from "./userReducer";
 import loggedInUser from "./loginReducer";
-import events from "./createEventReducer";
+import events from "./eventReducer";
 import tickets from "./ticketReducer";
 //import comments from "./commentReducer";
 

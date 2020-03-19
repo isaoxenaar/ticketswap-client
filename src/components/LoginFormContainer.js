@@ -24,20 +24,24 @@ class LoginFormContainer extends React.Component {
     if (this.props.loggedInUser) {
       return (
         <div>
-          you are logged in
           <Link to={`/${id}`}>Events</Link>
+          <h2>{`Welcome back, ${this.state.email}`}</h2>
         </div>
       );
     } else {
       return (
         <div>
+          <h3>
+            You are not logged in, log in (or signup first if you have not yet)
+            to create events, tickets and leave comments. You can browse the
+            available events and tickets, without an account.
+          </h3>
+          <Link to={"/events"}>Events</Link>
           <LoginForm
             onSubmit={this.onSubmit}
             onChange={this.onChange}
             values={this.state}
           />
-          you have to log in
-          <Link to={"/events"}>Events</Link>
         </div>
       );
     }
@@ -47,6 +51,7 @@ class LoginFormContainer extends React.Component {
 function mapStateToProps(state) {
   console.log("this is state", state);
   return {
+    tickets: state.tickets,
     events: state.events,
     signedUpUsers: state.signedUpUsers,
     loggedInUser: state.loggedInUser

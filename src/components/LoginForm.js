@@ -3,10 +3,10 @@ import React from "react";
 export default class LoginForm extends React.Component {
   render() {
     return (
-      <div>
+      <main>
         <form onSubmit={this.props.onSubmit}>
           <label>
-            login email
+            Login email{" "}
             <input
               placeholder="email"
               name="email"
@@ -16,18 +16,18 @@ export default class LoginForm extends React.Component {
             />
           </label>
           <label>
-            login password
+            Login password{" "}
             <input
               placeholder="password"
               name="password"
               onChange={this.props.onChange}
               value={this.props.values.password}
               type="text"
-            />
+            />{" "}
           </label>
-          <button>add</button>
+          <button>Login</button>
         </form>
-      </div>
+      </main>
     );
   }
 }

@@ -40,9 +40,6 @@ class CreateEventContainer extends React.Component {
   };
 
   render() {
-    console.log("this is events", this.props.events);
-    console.log("this is jwt in eventform", this.props.loggedInUser);
-
     const eventList = this.props.events.map(event => {
       return (
         <div>
@@ -61,6 +58,7 @@ class CreateEventContainer extends React.Component {
     if (this.props.loggedInUser) {
       return (
         <main>
+          <h3>create a new event here</h3>
           <EventForm
             onSubmit={this.onSubmit}
             onChange={this.onChange}
@@ -70,7 +68,15 @@ class CreateEventContainer extends React.Component {
         </main>
       );
     } else {
-      return <main>{eventList}</main>;
+      return (
+        <main>
+          <h3>
+            These are the current events, browse and if you want to create and
+            event, log in.
+          </h3>
+          {eventList}
+        </main>
+      );
     }
   }
 }
@@ -78,7 +84,6 @@ class CreateEventContainer extends React.Component {
 const mapDispatchToProps = { createEvent, getEvents };
 
 function mapStateToProps(state) {
-  console.log("this is state", state);
   return {
     events: state.events,
     signedUpUsers: state.signedUpUsers,

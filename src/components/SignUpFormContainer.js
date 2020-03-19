@@ -1,14 +1,13 @@
 import React from "react";
-import SignUpForm from "./SignUpForm";
 import { connect } from "react-redux";
 import { addUser } from "../actions/addUserAction";
+import SignUpForm from "./SignUpForm";
 
 class SignUpContainer extends React.Component {
   state = { email: "", password: "" };
 
   onSubmit = event => {
     event.preventDefault();
-    console.log("this is state in onSubmit", this.state);
     this.props.addUser(this.state);
   };
 
@@ -21,6 +20,7 @@ class SignUpContainer extends React.Component {
   render() {
     return (
       <div>
+        <h3>Sign Up, to start adding your own events, tickets and comments.</h3>
         <SignUpForm
           onSubmit={this.onSubmit}
           onChange={this.onChange}
@@ -32,8 +32,8 @@ class SignUpContainer extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log("this is state", state);
   return {
+    tickets: state.tickets,
     events: state.events,
     signedUpUsers: state.signedUpUsers,
     loggedInUser: state.loggedInUser

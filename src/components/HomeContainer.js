@@ -5,16 +5,26 @@ import SignUpContainer from "./SignUpFormContainer";
 import EventContainer from "./EventContainer";
 
 class HomeContainer extends React.Component {
+
+  componentDidMount()
+  
   render() {
     return (
-      <div>
+      <main>
+        <marquee>
+          <h1>TICKETSWAP by Isa</h1>
+        </marquee>
+        <h2>These users are currently signed up and able to contribute:</h2>
+        {this.props.signedUpUsers.map(user => {
+          return (
+            <li key={user.password}>
+              User Email: {user.email} User Id: {user.id}
+            </li>
+          );
+        })}
         <LoginFormContainer />
         <SignUpContainer />
-        <p>these are current signedup users</p>
-        {this.props.signedUpUsers.map(user => {
-          return <p key={user.password}>{user.email}</p>;
-        })}
-      </div>
+      </main>
     );
   }
 }
