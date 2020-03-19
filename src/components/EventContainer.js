@@ -46,58 +46,31 @@ class CreateEventContainer extends React.Component {
     const eventList = this.props.events.map(event => {
       return (
         <div>
-          <img
-            style={{ width: "200px", height: "200px" }}
-            src={event.pictureurl}
-            alt="not found"
-          />
+          <Link to={`./event/${event.id}`}>
+            <img
+              style={{ width: "200px", height: "200px" }}
+              src={event.pictureurl}
+              alt="not found"
+            />
+          </Link>
           <h3>{event.name}</h3>
-          <h4>{event.enddate}</h4>
-          <h5>{event.description}</h5>
         </div>
       );
     });
 
-    const page = this.props.events.length / 9;
-
-    if (this.props.events.length <= 9) {
-      if (this.props.loggedInUser) {
-        return (
-          <main>
-            {" "}
-            <EventForm
-              onSubmit={this.onSubmit}
-              onChange={this.onChange}
-              values={this.state}
-            />
-            {eventList}
-          </main>
-        );
-      } else {
-        return <main>{eventList}</main>;
-      }
+    if (this.props.loggedInUser) {
+      return (
+        <main>
+          <EventForm
+            onSubmit={this.onSubmit}
+            onChange={this.onChange}
+            values={this.state}
+          />
+          {eventList}
+        </main>
+      );
     } else {
-      if (this.props.loggedInUser) {
-        return (
-          <main>
-            {" "}
-            <EventForm
-              onSubmit={this.onSubmit}
-              onChange={this.onChange}
-              values={this.state}
-            />
-            {eventList}
-            <Link to={`/events/${page}`}>more events</Link>
-          </main>
-        );
-      } else {
-        return (
-          <main>
-            {eventList}
-            <Link to={`/events/${page}`}>more events</Link>
-          </main>
-        );
-      }
+      return <main>{eventList}</main>;
     }
   }
 }

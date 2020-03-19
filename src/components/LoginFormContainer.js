@@ -25,7 +25,7 @@ class LoginFormContainer extends React.Component {
       return (
         <div>
           you are logged in
-          <Link to={`/events/${id}`}>Events</Link>
+          <Link to={`/${id}`}>Events</Link>
         </div>
       );
     } else {
