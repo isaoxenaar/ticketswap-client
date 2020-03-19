@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { updateTicket } from "../actions/editTicketAction";
+import { updateTicket } from "../actions/updateTicketAction";
 
-class EditticketForm extends Component {
+class EditTicketForm extends Component {
   state = {
     logo: "",
     price: "",
@@ -30,7 +30,7 @@ class EditticketForm extends Component {
   };
 
   reset = () => {
-    this.setState({ url: "", title: "" });
+    this.setState({ logo: "", price: "", description: "" });
   };
 
   render() {
@@ -66,7 +66,7 @@ class EditticketForm extends Component {
           />
         </div>
         <div>
-          <button>Edit</button>
+          <button>Edit Ticket</button>
         </div>
         <button onClick={this.reset}>reset</button>
       </form>
@@ -84,7 +84,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  updateImage
+  updateTicket
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditImageForm);
+export default connect(mapStateToProps, mapDispatchToProps)(EditTicketForm);

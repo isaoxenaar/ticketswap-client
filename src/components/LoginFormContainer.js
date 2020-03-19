@@ -24,7 +24,7 @@ class LoginFormContainer extends React.Component {
     if (this.props.loggedInUser) {
       return (
         <div>
-          <Link to={`/${id}`}>Events</Link>
+          <Link to="/events">Events</Link>
           <h2>{`Welcome back, ${this.state.email}`}</h2>
         </div>
       );

@@ -1,9 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+
+import { getUsers } from "../actions/allUsersAction";
 import { createTicket } from "../actions/createTicketAction";
 import { getTickets } from "../actions/allTicketsAction";
 import TicketCreateForm from "./TicketCreateForm";
-import FraudeRisk from "./FraudeRiskContainer";
+import EditTicketForm from "./TicketEditForm";
 
 class TicketContainer extends React.Component {
   state = {
@@ -14,6 +17,7 @@ class TicketContainer extends React.Component {
   componentDidMount = () => {
     console.log("this is tickets");
     this.props.getTickets();
+    this.props.getUsers();
   };
 
   onChange = event => {
@@ -40,21 +44,44 @@ class TicketContainer extends React.Component {
 
   render() {
     console.log("this is tickets in render", this.props.tickets);
-    return (
-      <div>
-        hello world
-        <TicketCreateForm
-          onSubmit={this.onSubmit}
-          onChange={this.onChange}
-          values={this.state}
-        />
-        <FraudeRisk />
-      </div>
-    );
+
+    const ticketList = this.props.tickets.map(ticket => {
+      return (
+        <div>
+          <Link to="/ticket">
+            <img src={ticket.logo} alt="not found" />
+          </Link>
+          <p>description of ticket: {ticket.description}</p>
+          <p>price of ticket: {ticket.price}</p>
+          <EditTicketForm />
+        </div>
+      );
+    });
+
+    if (this.props.loggedInUser) {
+      return (
+        <main>
+          <h3>create a new ticket for this event here.</h3>
+          <TicketCreateForm
+            onSubmit={this.onSubmit}
+            onChange={this.onChange}
+            values={this.state}
+          />
+          {ticketList}
+        </main>
+      );
+    } else {
+      return (
+        <main>
+          <h3>these tickets are for sale at the moment</h3>
+          {ticketList}
+        </main>
+      );
+    }
   }
 }
 
-const mapDispatchToProps = { createTicket, getTickets };
+const mapDispatchToProps = { createTicket, getTickets, getUsers };
 
 function mapStateToProps(state) {
   console.log("this is state", state);

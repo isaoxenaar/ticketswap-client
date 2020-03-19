@@ -14,19 +14,8 @@ class App extends Component {
         <main>
           <Route exact path="/" component={HomeContainer} />
           <Route exact path="/events" component={EventContainer} />
-          <Route exact path="/:id" component={EventContainer} />
-          <Route exact path="/events/event" component={TicketContainer} />
-          <Route exact path="/events/:event" component={TicketContainer} />
-          <Route
-            exact
-            path="/events/event/ticket"
-            component={CommentContainer}
-          />
-          <Route
-            exact
-            path="/events/event/:ticket"
-            component={CommentContainer}
-          />
+          <Route exact path="/event" component={TicketContainer} />
+          <Route exact path="/ticket" component={CommentContainer} />
           {/* {/* <Route exact path="/events/:page" component={EventContainer} />
           {/* <Route exact path="/events/:id/:page" component={EventContainer} /> */}
         </main>
@@ -34,4 +23,5 @@ class App extends Component {
     );
   }
 }
+
 export default App;
