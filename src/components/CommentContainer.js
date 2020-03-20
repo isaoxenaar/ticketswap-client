@@ -48,6 +48,7 @@ class CommentContainer extends React.Component {
   };
 
   render() {
+    console.log("this is jwt in commentcontainer", this.props.loggedInUser);
     const commentList = this.props.comments.map(comment => {
       return (
         <div>
@@ -66,6 +67,7 @@ class CommentContainer extends React.Component {
             onSubmit={this.onSubmit}
             onChange={this.onChange}
             values={this.state}
+            users={this.props.signedUpUsers}
           />
           {commentList}
         </main>
@@ -75,6 +77,7 @@ class CommentContainer extends React.Component {
         <main>
           <h3>These are the comments for this ticket</h3>
           {commentList}
+          <FraudeRiskContainer ticketId={} />
         </main>
       );
     }

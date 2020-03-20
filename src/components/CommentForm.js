@@ -6,16 +6,26 @@ export default class Form extends React.Component {
       <div>
         <form onSubmit={this.props.onSubmit}>
           <label>
+            author
+            <input
+              placeholder="userId"
+              name="userId"
+              value={this.props.values.userId}
+              onChange={this.props.onChange}
+              type="text"
+            />
+          </label>
+          <label>
             text
             <input
-              placeholder="logo"
-              name="logo"
+              placeholder="text"
+              name="text"
               value={this.props.values.text}
               onChange={this.props.onChange}
               type="text"
             />
           </label>
-          <button>Add Ticket</button>
+          <button>Add Comment</button>
         </form>
       </div>
     );

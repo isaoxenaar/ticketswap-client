@@ -42,17 +42,19 @@ class EditTicketForm extends Component {
           Logo Url{" "}
           <input
             type="text"
-            name="url"
+            placeholder="logo"
+            name="logo"
             onChange={this.onChange}
-            value={this.state.url}
+            value={this.state.logo}
           />
         </div>
         <div>
           Price{" "}
           <input
             type="text"
-            name="title"
-            value={this.state.title}
+            placeholder="price"
+            name="price"
+            value={this.state.price}
             onChange={this.onChange}
           />
         </div>
@@ -60,8 +62,9 @@ class EditTicketForm extends Component {
           Description{" "}
           <input
             type="text"
-            name="title"
-            value={this.state.title}
+            placeholder="description"
+            name="description"
+            value={this.state.description}
             onChange={this.onChange}
           />
         </div>

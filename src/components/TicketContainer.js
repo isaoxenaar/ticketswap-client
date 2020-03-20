@@ -14,6 +14,7 @@ class TicketContainer extends React.Component {
     description: "",
     price: ""
   };
+
   componentDidMount = () => {
     console.log("this is tickets");
     this.props.getTickets();
@@ -53,7 +54,7 @@ class TicketContainer extends React.Component {
           </Link>
           <p>description of ticket: {ticket.description}</p>
           <p>price of ticket: {ticket.price}</p>
-          <EditTicketForm />
+          <EditTicketForm ticketId={ticket.id} />
         </div>
       );
     });
