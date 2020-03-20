@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateTicket } from "../actions/updateTicketAction";
+//only the author of the ticket can edit the ticket.
 
 class EditTicketForm extends Component {
   state = {
@@ -18,8 +19,6 @@ class EditTicketForm extends Component {
     };
 
     this.props.updateTicket(this.props.ticketId, update);
-
-    console.log("submit test", this.props.ticketId, update);
   };
 
   onChange = event => {
@@ -34,8 +33,6 @@ class EditTicketForm extends Component {
   };
 
   render() {
-    console.log("this.props.test:", this.props);
-
     return (
       <form onSubmit={this.onSubmit}>
         <div>

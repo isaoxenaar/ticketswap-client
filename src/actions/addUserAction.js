@@ -10,7 +10,6 @@ function newUser(payload) {
   };
 }
 export const addUser = data => dispatch => {
-  console.log("this is data", data);
   request
     .post(`${baseUrl}/user`)
     .send(data)

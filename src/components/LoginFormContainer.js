@@ -19,8 +19,6 @@ class LoginFormContainer extends React.Component {
   };
 
   render() {
-    console.log("What is this", this.props.loggedInUser);
-    const id = this.props.loggedInUser;
     if (this.props.loggedInUser) {
       return (
         <div>
@@ -49,7 +47,6 @@ class LoginFormContainer extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log("this is state", state);
   return {
     tickets: state.tickets,
     events: state.events,

@@ -12,12 +12,10 @@ function newLogin(payload) {
 }
 
 export const checkLogin = data => dispatch => {
-  console.log("This is working too", data);
   request
     .post(`${baseUrl}/login`)
     .send(data)
     .then(response => {
-      console.log("this is response", response);
       const action = newLogin(response.body.jwt);
       dispatch(action);
     })

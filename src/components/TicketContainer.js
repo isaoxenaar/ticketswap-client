@@ -7,6 +7,7 @@ import { createTicket } from "../actions/createTicketAction";
 import { getTickets } from "../actions/allTicketsAction";
 import TicketCreateForm from "./TicketCreateForm";
 import EditTicketForm from "./TicketEditForm";
+//add title as property value is eventId .find event give back event.name
 
 class TicketContainer extends React.Component {
   state = {
@@ -16,7 +17,6 @@ class TicketContainer extends React.Component {
   };
 
   componentDidMount = () => {
-    console.log("this is tickets");
     this.props.getTickets();
     this.props.getUsers();
   };
@@ -28,7 +28,6 @@ class TicketContainer extends React.Component {
   };
 
   onSubmit = event => {
-    console.log("this is event");
     event.preventDefault();
     this.props.createTicket({
       logo: this.state.logo,
@@ -44,19 +43,29 @@ class TicketContainer extends React.Component {
   };
 
   render() {
-    console.log("this is tickets in render", this.props.tickets);
-
     const ticketList = this.props.tickets.map(ticket => {
-      return (
-        <div>
-          <Link to="/ticket">
-            <img src={ticket.logo} alt="not found" />
-          </Link>
-          <p>description of ticket: {ticket.description}</p>
-          <p>price of ticket: {ticket.price}</p>
-          <EditTicketForm ticketId={ticket.id} />
-        </div>
-      );
+      if (this.props.loggedInUser) {
+        return (
+          <div>
+            <Link to="/ticket">
+              <img src={ticket.logo} alt="not found" />
+            </Link>
+            <p>description of ticket: {ticket.description}</p>
+            <p>price of ticket: $ {ticket.price}</p>
+            <EditTicketForm ticketId={ticket.id} />
+          </div>
+        );
+      } else {
+        return (
+          <div>
+            <Link to="/ticket">
+              <img src={ticket.logo} alt="not found" />
+            </Link>
+            <p>description of ticket: {ticket.description}</p>
+            <p>price of ticket: $ {ticket.price}</p>
+          </div>
+        );
+      }
     });
 
     if (this.props.loggedInUser) {
@@ -85,8 +94,8 @@ class TicketContainer extends React.Component {
 const mapDispatchToProps = { createTicket, getTickets, getUsers };
 
 function mapStateToProps(state) {
-  console.log("this is state", state);
   return {
+    comments: state.comments,
     tickets: state.tickets,
     events: state.events,
     signedUpUsers: state.signedUpUsers,

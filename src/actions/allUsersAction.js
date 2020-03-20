@@ -12,7 +12,6 @@ function allUsers(payload) {
 
 export const getUsers = () => (dispatch, getState) => {
   const state = getState();
-  console.log("this is allusers state", state);
 
   if (!state.signedUpUsers.length) {
     request(`${baseUrl}/user`)

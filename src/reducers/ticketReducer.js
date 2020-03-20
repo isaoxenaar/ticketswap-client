@@ -3,7 +3,6 @@ export default function(state = [], action = {}) {
     case "ALL_TICKETS":
       return action.payload;
     case "NEW_TICKET":
-      console.log("this is new ticket", action.payload);
       return [action.payload, ...state];
     case "CHANGE_TICKET":
       const newState = state.map(ticket => {

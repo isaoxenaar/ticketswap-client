@@ -1,8 +1,3 @@
-// has one ticket by user and eventId
-// has one an editform for the ticket
-// has a comment form for the ticket
-// has a fraude risk calculation
-
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
@@ -14,6 +9,8 @@ import { getEvents } from "../actions/allEventsAction";
 import { getUsers } from "../actions/allUsersAction";
 
 import CommentForm from "./CommentForm";
+//import FraudeRiskContainer from "./FraudeRiskContainer";
+//set userId as author, behind the words.
 
 class CommentContainer extends React.Component {
   state = {
@@ -48,7 +45,6 @@ class CommentContainer extends React.Component {
   };
 
   render() {
-    console.log("this is jwt in commentcontainer", this.props.loggedInUser);
     const commentList = this.props.comments.map(comment => {
       return (
         <div>
@@ -77,7 +73,10 @@ class CommentContainer extends React.Component {
         <main>
           <h3>These are the comments for this ticket</h3>
           {commentList}
-          <FraudeRiskContainer ticketId={} />
+          {/* <FraudeRiskContainer
+            ticketId={this.state.ticketId}
+            author={this.state.userId}
+          /> */}
         </main>
       );
     }

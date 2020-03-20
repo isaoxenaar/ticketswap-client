@@ -12,7 +12,6 @@ function newTicket(payload) {
 export const createTicket = data => (dispatch, getState) => {
   const state = getState();
   const { loggedInUser } = state;
-  console.log("this is user in createevent", loggedInUser);
   request
     .post(`${baseUrl}/ticket`)
     .set("Authorization", `Bearer ${loggedInUser}`)

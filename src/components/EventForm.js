@@ -2,7 +2,6 @@ import React from "react";
 
 export default class Form extends React.Component {
   render() {
-    console.log("this is state in form", this.props.values);
     return (
       <div>
         <form onSubmit={this.props.onSubmit}>

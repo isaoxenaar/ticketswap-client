@@ -5,6 +5,9 @@ import { createEvent } from "../actions/createEventAction";
 import { getEvents } from "../actions/allEventsAction";
 import EventForm from "./EventForm";
 
+//filter by date
+//max 9 per page .next button
+
 class CreateEventContainer extends React.Component {
   state = {
     name: "",
@@ -85,6 +88,8 @@ const mapDispatchToProps = { createEvent, getEvents };
 
 function mapStateToProps(state) {
   return {
+    comments: state.comments,
+    tickets: state.tickets,
     events: state.events,
     signedUpUsers: state.signedUpUsers,
     loggedInUser: state.loggedInUser

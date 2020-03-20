@@ -12,7 +12,7 @@ function newComment(payload) {
 export const createComment = data => (dispatch, getState) => {
   const state = getState();
   const { loggedInUser } = state;
-  console.log("this is user in createevent", loggedInUser);
+
   request
     .post(`${baseUrl}/event`)
     .set("Authorization", `Bearer ${loggedInUser}`)
