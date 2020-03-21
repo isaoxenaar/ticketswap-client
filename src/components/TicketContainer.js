@@ -13,7 +13,8 @@ class TicketContainer extends React.Component {
   state = {
     logo: "",
     description: "",
-    price: ""
+    price: "",
+    eventId: ""
   };
 
   componentDidMount = () => {
@@ -29,16 +30,20 @@ class TicketContainer extends React.Component {
 
   onSubmit = event => {
     event.preventDefault();
+    const id = this.props.match.params.id;
+    console.log("this is params", id);
     this.props.createTicket({
       logo: this.state.logo,
       description: this.state.description,
-      price: this.state.price
+      price: this.state.price,
+      eventId: id
     });
 
     this.setState({
       logo: "",
       description: "",
-      price: ""
+      price: "",
+      eventId: ""
     });
   };
 
@@ -46,8 +51,8 @@ class TicketContainer extends React.Component {
     const ticketList = this.props.tickets.map(ticket => {
       if (this.props.loggedInUser) {
         return (
-          <div>
-            <Link to="/ticket">
+          <div key={ticket.id}>
+            <Link to={`/ticket/${ticket.id}`}>
               <img src={ticket.logo} alt="not found" />
             </Link>
             <p>description of ticket: {ticket.description}</p>
@@ -57,8 +62,8 @@ class TicketContainer extends React.Component {
         );
       } else {
         return (
-          <div>
-            <Link to="/ticket">
+          <div key={ticket.id}>
+            <Link to={`/ticket/${ticket.id}`}>
               <img src={ticket.logo} alt="not found" />
             </Link>
             <p>description of ticket: {ticket.description}</p>

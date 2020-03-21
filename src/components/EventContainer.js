@@ -45,8 +45,8 @@ class CreateEventContainer extends React.Component {
   render() {
     const eventList = this.props.events.map(event => {
       return (
-        <div>
-          <Link to="/event">
+        <div key={event.id}>
+          <Link to={`/event/${event.id}`}>
             <img
               style={{ width: "200px", height: "200px" }}
               src={event.pictureurl}

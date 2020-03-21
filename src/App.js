@@ -14,9 +14,9 @@ class App extends Component {
         <main>
           <Route exact path="/" component={HomeContainer} />
           <Route exact path="/events" component={EventContainer} />
-          <Route exact path="/event" component={TicketContainer} />
-          <Route exact path="/ticket" component={CommentContainer} />
-          <Route exact path="/events/:page" component={EventContainer} />
+          <Route exact path="/event/:id" component={TicketContainer} />
+          <Route exact path="/ticket/:id" component={CommentContainer} />
+          {/* <Route exact path="/events/:page" component={EventContainer} /> */}
         </main>
       </Provider>
     );
