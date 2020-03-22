@@ -7,49 +7,51 @@
 // // // ​
 // // // The minimal risk is 5% (there's no such thing as no risk) and the maximum risk is 95%.
 
-// // // import React, { useCallback } from "react";
-// // // import { connect } from "react-redux";
-// // // import { getTickets } from "../actions/allTicketsAction";
-// // // import { getEvents } from "../actions/allEventsAction";
-// // // import { getUsers } from "../actions/allUsersAction";
+// import React, { useCallback } from "react";
+// import { connect } from "react-redux";
+// import { getTickets } from "../actions/allTicketsAction";
+// import { getEvents } from "../actions/allEventsAction";
+// import { getUsers } from "../actions/allUsersAction";
+// import { getComments } from "..actions/allCommentsAction";
 
-// // // class FraudeRisk extends React.Component {
-// // //   componentDidMount = () => {
-// // //     this.props.getTickets();
-// // //     this.props.getEvents();
-// // //     this.props.getUsers();
-// // //   };
+// class FraudeRisk extends React.Component {
+// componentDidMount = () => {
+// this.props.getTickets()
+// this.props.getEvents();
+// this.props.getUsers()
+// this.props.getComments()
+// };
 
-// // //   render() {
-// // // const theTicket = this.props.tickets.find(ticket =>
-// // //   {
-// // //     this.props.ticketId === ticket.id
-// // //   }
-// // // )
+// render() {
+// const theTicket = this.props.tickets.find(ticket =>
+// {
+//   this.props.ticketId === ticket.id
+// }
+// )
 
-// // // const onlyTicket = this.props.tickets.filter(ticket => {
-// // //   if(ticket.userId === this.props.)
-// // //   {
-// // //     return ticket
-// // //   }
-// // // })
+// const onlyTicket = this.props.tickets.filter(ticket => {
+// if(ticket.userId === this.props.)
+// {
+//   return ticket
+// }
+// })
 
-// // // const average = this.props.tickets.reduce((ticket, ))
+// const average = this.props.tickets.reduce((ticket, ))
 
-// // // const timeCreated = this.props.tickets.find(return createdAt, find T in string + 2letters after )
+// const timeCreated = this.props.tickets.find(return createdAt, find T in string + 2letters after )
 
-// // // const amountComments = comment.length
+// const amountComments = comment.length
 
-// // // const fraudeRisk = 5
+// const fraudeRisk = 5
 
-// // // if(onlyTicket > 1)
-// // // {
-// // //    fraudeRisk = fraudeRisk + 10
-// // // }
-// // // if(timeCreated >= 9 && <= 17)
-// // {
+// if(onlyTicket > 1)
+// {
+//   fraudeRisk = fraudeRisk + 10
+// }
+// if(timeCreated >= 9 && <= 17)
+// {
 //       fraudeRisk = fraudeRisk - 10
-// // }
+// }
 // else {
 //   fraudeRisk = fraudeRisk + 10
 // }
@@ -60,10 +62,10 @@
 //   const percentage = one
 // }
 
-// // // const color = {color: ""}
-// // // if(frauderisk > 70)
-// // // {
-// // //   color === {color: red}
+// const color = {color: ""}
+// if(frauderisk > 70)
+// {
+//   color === {color: red}
 // // // }
 // // // if(frauderisk < 70 && frauderisk > 30 )
 // // // {
@@ -79,17 +81,17 @@
 // // //   }
 // // // }
 
-// // // const mapDispatchToProps = { getEvents, getTickets, getUsers };
+// const mapDispatchToProps = { getEvents, getTickets, getUsers, getComments };
 
-// // // function mapStateToProps(state) {
-// // //   console.log("this is state", state);
-// // //   return {
-// // //    comments: state.comments,
-// // //     tickets: state.tickets,
-// // //     events: state.events,
-// // //     signedUpUsers: state.signedUpUsers,
-// // //     loggedInUser: state.loggedInUser
-// // //   };
-// // // }
+// function mapStateToProps(state) {
+// console.log("this is state", state);
+// return {
+//   comments: state.comments,
+//  tickets: state.tickets,
+//   events: state.events,
+//   signedUpUsers: state.signedUpUsers,
+//   loggedInUser: state.loggedInUser
+// };
+// }
 
-// // // export default connect(mapStateToProps, mapDispatchToProps)(FraudeRisk);
+// export default connect(mapStateToProps, mapDispatchToProps)(FraudeRisk);

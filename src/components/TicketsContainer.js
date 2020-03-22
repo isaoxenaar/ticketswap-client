@@ -7,8 +7,8 @@ import { createTicket } from "../actions/createTicketAction";
 import { getTickets } from "../actions/allTicketsAction";
 import TicketCreateForm from "./TicketCreateForm";
 import EditTicketForm from "./TicketEditForm";
-//add title as property value is eventId .find event give back event.name
 
+//add loading in render
 class TicketContainer extends React.Component {
   state = {
     logo: "",
@@ -72,6 +72,18 @@ class TicketContainer extends React.Component {
         );
       }
     });
+
+    //   const getPokemonById = (pokemons, id) => {
+    //     const poke2 = pokemons.find((pokemon) => {
+    //         return pokemon.id === id
+    //     })
+    //     return poke2;
+    // }
+
+    const theEvent = this.props.events.find(event => {
+      return event.id === this.props.match.params.id;
+    });
+    console.log("is this the event", theEvent);
 
     if (this.props.loggedInUser) {
       return (

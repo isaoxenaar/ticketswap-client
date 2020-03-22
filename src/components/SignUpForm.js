@@ -1,4 +1,5 @@
 import React from "react";
+// add reset button
 
 export default class SignUpForm extends React.Component {
   render() {

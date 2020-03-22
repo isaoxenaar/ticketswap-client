@@ -7,6 +7,8 @@ import { getEvents } from "../actions/allEventsAction";
 import { getUsers } from "../actions/allUsersAction";
 import { getComments } from "../actions/allCommentsAction";
 
+//add loading
+
 class HomeContainer extends React.Component {
   componentDidMount = () => {
     this.props.getTickets();

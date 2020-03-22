@@ -5,8 +5,9 @@ import { createEvent } from "../actions/createEventAction";
 import { getEvents } from "../actions/allEventsAction";
 import EventForm from "./EventForm";
 
-//filter by date
+//filter by date, if date has passed DELETE event, just use a number to show a delete route
 //max 9 per page .next button
+//add loading part
 
 class CreateEventContainer extends React.Component {
   state = {

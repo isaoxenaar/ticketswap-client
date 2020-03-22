@@ -9,11 +9,10 @@ import { getEvents } from "../actions/allEventsAction";
 import { getUsers } from "../actions/allUsersAction";
 
 import CommentForm from "./CommentForm";
-//import FraudeRiskContainer from "./FraudeRiskContainer";
-//set userId as author, behind the words.
-
+//add loading part.
 class CommentContainer extends React.Component {
   state = {
+    author: "",
     text: "",
     ticketId: ""
   };
@@ -33,23 +32,29 @@ class CommentContainer extends React.Component {
 
   onSubmit = event => {
     event.preventDefault();
+    const id = this.props.match.params.id;
+
     this.props.createComment({
+      author: this.state.author,
       text: this.state.text,
-      ticketId: this.state.ticketId
+      ticketId: id
     });
 
     this.setState({
+      author: "",
       text: "",
       ticketId: ""
     });
   };
 
   render() {
+    console.log("this is jwt in comment", this.props.loggedInUser);
     const commentList = this.props.comments.map(comment => {
       return (
         <div>
           <h3>
-            author: {comment.userId} comment: {comment.text}
+            author: {comment.author} comment: {comment.text} user id:{" "}
+            {comment.userId}
           </h3>
         </div>
       );
@@ -63,7 +68,6 @@ class CommentContainer extends React.Component {
             onSubmit={this.onSubmit}
             onChange={this.onChange}
             values={this.state}
-            users={this.props.signedUpUsers}
           />
           {commentList}
         </main>
@@ -73,10 +77,6 @@ class CommentContainer extends React.Component {
         <main>
           <h3>These are the comments for this ticket</h3>
           {commentList}
-          {/* <FraudeRiskContainer
-            ticketId={this.state.ticketId}
-            author={this.state.userId}
-          /> */}
         </main>
       );
     }

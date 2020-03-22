@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateTicket } from "../actions/updateTicketAction";
 //only the author of the ticket can edit the ticket.
+//add reset button
 
 class EditTicketForm extends Component {
   state = {

@@ -8,18 +8,18 @@ export default class Form extends React.Component {
           <label>
             author
             <input
-              placeholder="userId"
-              name="userId"
-              value={this.props.values.userId}
+              placeholder="author"
+              name="author"
+              value={this.props.values.author}
               onChange={this.props.onChange}
               type="text"
             />
           </label>
           <label>
-            text
+            comment
             <input
-              placeholder="text"
-              name="text"
+              placeholder="comment"
+              name="comment"
               value={this.props.values.text}
               onChange={this.props.onChange}
               type="text"
