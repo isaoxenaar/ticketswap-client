@@ -1,8 +1,10 @@
 import React from "react";
-import LoginForm from "./LoginForm";
-import { connect } from "react-redux";
-import { checkLogin } from "../actions/loginUserAction";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+import LoginForm from "./LoginForm";
+import { checkLogin } from "../actions/loginUserAction";
+import { thisUser } from "../actions/thisUserAction";
 
 class LoginFormContainer extends React.Component {
   state = { email: "", password: "" };
@@ -10,7 +12,7 @@ class LoginFormContainer extends React.Component {
   onSubmit = event => {
     event.preventDefault();
     this.props.checkLogin(this.state);
-    //this.props.thisUser(this.state);
+    this.props.thisUser(this.state);
   };
 
   onChange = event => {
@@ -51,6 +53,8 @@ class LoginFormContainer extends React.Component {
   }
 }
 
+const mapDispatchToProps = { checkLogin, thisUser };
+
 function mapStateToProps(state) {
   return {
     comments: state.comments,
@@ -60,4 +64,4 @@ function mapStateToProps(state) {
     loggedInUser: state.loggedInUser
   };
 }
-export default connect(mapStateToProps, { checkLogin })(LoginFormContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginFormContainer);

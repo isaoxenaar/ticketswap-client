@@ -23,11 +23,9 @@ class FraudeRisk extends React.Component {
     const onlyTicketByAuthor = this.props.tickets.filter(ticket => {
       return ticket.userId == thisTicket.userId;
     });
-
     const ticketsThisEvent = this.props.tickets.filter(ticket => {
       return ticket.eventId == thisEventId;
     });
-
     const priceAllTickets = ticketsThisEvent.reduce(
       (totalPrice, currentTicket) => {
         const total = parseFloat(currentTicket.price) + totalPrice;
@@ -35,13 +33,9 @@ class FraudeRisk extends React.Component {
       },
       0
     );
-    console.log("price all tickets", priceAllTickets);
-
     const average = priceAllTickets / ticketsThisEvent.length;
     const onePercent = average / 100;
     const percentage = thisTicket.price / onePercent;
-    console.log("all values average", average, onePercent, percentage);
-
     const commentsThisTicket = this.props.comments.filter(comment => {
       return comment.ticketId == thisTicket.id;
     });
@@ -49,8 +43,6 @@ class FraudeRisk extends React.Component {
     if (onlyTicketByAuthor.length === 1) {
       fraudeRisk = fraudeRisk + 10;
     }
-    console.log("onlyTicket", onlyTicketByAuthor, fraudeRisk);
-
     if (thisTicket.price < average) {
       fraudeRisk = fraudeRisk + percentage;
     } else if (thisTicket.price > average && percentage <= 10) {
@@ -58,13 +50,9 @@ class FraudeRisk extends React.Component {
     } else if (thisTicket.price > average && percentage > 10) {
       fraudeRisk = fraudeRisk + 10;
     }
-    console.log("fraudeRisk met average", fraudeRisk, average, percentage);
-
     if (commentsThisTicket.length > 3) {
       fraudeRisk = fraudeRisk + 5;
     }
-    console.log("fraudeRisk met length", commentsThisTicket, fraudeRisk);
-
     if (fraudeRisk >= 70) {
       color = { color: "red" };
     }
@@ -74,8 +62,6 @@ class FraudeRisk extends React.Component {
     if (fraudeRisk < 30) {
       color = { color: "green" };
     }
-    console.log("fraudeRisk met color", color);
-
     if (fraudeRisk < 5) {
       fraudeRisk = 5;
     }

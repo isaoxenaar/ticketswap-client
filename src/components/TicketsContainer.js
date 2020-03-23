@@ -30,7 +30,6 @@ class TicketContainer extends React.Component {
   onSubmit = event => {
     event.preventDefault();
     const id = this.props.match.params.id;
-    console.log("this is params", id);
     this.props.createTicket({
       logo: this.state.logo,
       description: this.state.description,
@@ -80,14 +79,13 @@ class TicketContainer extends React.Component {
     const thisEventArray = this.props.events.filter(event => {
       return event.id == this.props.match.params.id;
     });
-    console.log("is this the event", thisEventArray);
     const thisEvent = thisEventArray[0];
     if (this.props.loggedInUser) {
       return (
         <main>
           <h3>eventname: {thisEvent.name} </h3>
           <img src={thisEvent.pictureurl} alt="not found" />
-          <h4>description{thisEvent.description}</h4>
+          <h4>description: {thisEvent.description}</h4>
           <h3>create a new ticket for this event here.</h3>
           <TicketCreateForm
             onSubmit={this.onSubmit}

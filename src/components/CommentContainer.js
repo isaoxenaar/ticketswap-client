@@ -41,7 +41,6 @@ class CommentContainer extends React.Component {
   };
 
   render() {
-    console.log("this is jwt in comment", this.props.loggedInUser);
     const commentList = this.props.comments.map(comment => {
       return (
         <div>
