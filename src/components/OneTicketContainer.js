@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
 import { getComments } from "../actions/allCommentsAction";
 import { getTickets } from "../actions/allTicketsAction";
@@ -8,15 +7,9 @@ import { getEvents } from "../actions/allEventsAction";
 import { getUsers } from "../actions/allUsersAction";
 
 import CommentContainer from "./CommentContainer";
-import FraudeRiskContainer from "./FraudeRiskContainer";
+import FraudeRisk from "./FraudeRiskContainer";
 
 class OneTicketContainer extends React.Component {
-  state = {
-    author: "",
-    text: "",
-    ticketId: ""
-  };
-
   componentDidMount = () => {
     this.props.getEvents();
     this.props.getTickets();
@@ -25,10 +18,22 @@ class OneTicketContainer extends React.Component {
   };
 
   render() {
-    console.log("this is jwt in comment", this.props.loggedInUser);
+    const thisTicketArray = this.props.tickets.filter(ticket => {
+      return ticket.id == this.props.match.params.id;
+    });
+    const thisTicket = thisTicketArray[0];
+
     return (
       <div>
-        <CommentContainer />
+        <img src={thisTicket.logo} alt="not found" />
+        <h3>
+          price: {thisTicket.price} description: {thisTicket.description}
+        </h3>
+        <CommentContainer
+          passedTicketId={this.props.match.params.id}
+          passedEventId={thisTicket.eventId}
+        />
+        <FraudeRisk thisTicket={thisTicket} thisEventId={thisTicket.eventId} />
       </div>
     );
   }

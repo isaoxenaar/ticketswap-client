@@ -77,6 +77,7 @@ class EditTicketForm extends Component {
 
 function mapStateToProps(state) {
   return {
+    comments: state.comments,
     tickets: state.tickets,
     events: state.events,
     signedUpUsers: state.signedUpUsers,

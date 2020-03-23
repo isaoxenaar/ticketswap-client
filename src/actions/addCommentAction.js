@@ -14,7 +14,7 @@ export const createComment = data => (dispatch, getState) => {
   const { loggedInUser } = state;
 
   request
-    .post(`${baseUrl}/event`)
+    .post(`${baseUrl}/comment`)
     .set("Authorization", `Bearer ${loggedInUser}`)
     .send(data)
     .then(response => {

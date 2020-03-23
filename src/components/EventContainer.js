@@ -6,8 +6,7 @@ import { getEvents } from "../actions/allEventsAction";
 import EventForm from "./EventForm";
 
 //filter by date, if date has passed DELETE event, just use a number to show a delete route
-//max 9 per page .next button
-//add loading part
+//max 9 per page .next button, if events.length > 9 show next button.
 
 class CreateEventContainer extends React.Component {
   state = {
@@ -16,6 +15,7 @@ class CreateEventContainer extends React.Component {
     description: "",
     enddate: ""
   };
+
   componentDidMount = () => {
     this.props.getEvents();
   };
@@ -44,6 +44,15 @@ class CreateEventContainer extends React.Component {
   };
 
   render() {
+    // const today = 10; //should be the real today.
+    // const eventListFuture = this.props.events.filter(event => {
+    //   return event.enddate > today;
+    // });
+
+    // const eventListPast = this.props.events.filter(event => {
+    //   return event.enddate < today;
+    // });
+
     const eventList = this.props.events.map(event => {
       return (
         <div key={event.id}>
@@ -59,6 +68,11 @@ class CreateEventContainer extends React.Component {
       );
     });
 
+    // eventListPast.map(event => {
+    //   deleteEvent();
+    // });
+
+    //console.log("events future", eventListFuture);
     if (this.props.loggedInUser) {
       return (
         <main>
@@ -68,6 +82,7 @@ class CreateEventContainer extends React.Component {
             onChange={this.onChange}
             values={this.state}
           />
+          <h4>these are the events for the coming time</h4>
           {eventList}
         </main>
       );
@@ -75,7 +90,7 @@ class CreateEventContainer extends React.Component {
       return (
         <main>
           <h3>
-            These are the current events, browse and if you want to create and
+            These are the current events, browse. If you want to create an
             event, log in.
           </h3>
           {eventList}

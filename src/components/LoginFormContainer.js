@@ -10,6 +10,7 @@ class LoginFormContainer extends React.Component {
   onSubmit = event => {
     event.preventDefault();
     this.props.checkLogin(this.state);
+    //this.props.thisUser(this.state);
   };
 
   onChange = event => {
@@ -19,10 +20,14 @@ class LoginFormContainer extends React.Component {
   };
 
   render() {
+    const thisUserArray = this.props.signedUpUsers.filter(user => {
+      return user.email === this.state.email;
+    });
+    const thisUser = thisUserArray[0];
     if (this.props.loggedInUser) {
       return (
         <div>
-          <Link to="/events">Events</Link>
+          <Link to={`/events/${thisUser.id}`}>Events</Link>
           <h2>{`Welcome back, ${this.state.email}`}</h2>
         </div>
       );
@@ -48,6 +53,7 @@ class LoginFormContainer extends React.Component {
 
 function mapStateToProps(state) {
   return {
+    comments: state.comments,
     tickets: state.tickets,
     events: state.events,
     signedUpUsers: state.signedUpUsers,

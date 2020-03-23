@@ -8,7 +8,6 @@ import { getTickets } from "../actions/allTicketsAction";
 import TicketCreateForm from "./TicketCreateForm";
 import EditTicketForm from "./TicketEditForm";
 
-//add loading in render
 class TicketContainer extends React.Component {
   state = {
     logo: "",
@@ -50,10 +49,15 @@ class TicketContainer extends React.Component {
   render() {
     const ticketList = this.props.tickets.map(ticket => {
       if (this.props.loggedInUser) {
+        // && this.props.thisUser.id === ticket.userId
         return (
           <div key={ticket.id}>
             <Link to={`/ticket/${ticket.id}`}>
-              <img src={ticket.logo} alt="not found" />
+              <img
+                style={{ width: "200px", height: "200px" }}
+                src={ticket.logo}
+                alt="not found"
+              />
             </Link>
             <p>description of ticket: {ticket.description}</p>
             <p>price of ticket: $ {ticket.price}</p>
@@ -73,33 +77,33 @@ class TicketContainer extends React.Component {
       }
     });
 
-    //   const getPokemonById = (pokemons, id) => {
-    //     const poke2 = pokemons.find((pokemon) => {
-    //         return pokemon.id === id
-    //     })
-    //     return poke2;
-    // }
-
-    const theEvent = this.props.events.find(event => {
-      return event.id === this.props.match.params.id;
+    const thisEventArray = this.props.events.filter(event => {
+      return event.id == this.props.match.params.id;
     });
-    console.log("is this the event", theEvent);
-
+    console.log("is this the event", thisEventArray);
+    const thisEvent = thisEventArray[0];
     if (this.props.loggedInUser) {
       return (
         <main>
+          <h3>eventname: {thisEvent.name} </h3>
+          <img src={thisEvent.pictureurl} alt="not found" />
+          <h4>description{thisEvent.description}</h4>
           <h3>create a new ticket for this event here.</h3>
           <TicketCreateForm
             onSubmit={this.onSubmit}
             onChange={this.onChange}
             values={this.state}
           />
+          <h3>these tickets are for sale at the moment</h3>
           {ticketList}
         </main>
       );
     } else {
       return (
         <main>
+          <h3>eventname: {thisEvent.name} </h3>
+          <img src={thisEvent.pictureurl} alt="not found" />
+          <h4>description{thisEvent.description}</h4>
           <h3>these tickets are for sale at the moment</h3>
           {ticketList}
         </main>

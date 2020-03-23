@@ -1,27 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-
 import { createComment } from "../actions/addCommentAction";
 import { getComments } from "../actions/allCommentsAction";
-import { getTickets } from "../actions/allTicketsAction";
-import { getEvents } from "../actions/allEventsAction";
-import { getUsers } from "../actions/allUsersAction";
-
 import CommentForm from "./CommentForm";
-//add loading part.
+
 class CommentContainer extends React.Component {
   state = {
     author: "",
     text: "",
-    ticketId: ""
+    ticketId: "",
+    eventId: ""
   };
 
   componentDidMount = () => {
-    this.props.getEvents();
-    this.props.getTickets();
     this.props.getComments();
-    this.props.getUsers();
   };
 
   onChange = event => {
@@ -32,18 +24,19 @@ class CommentContainer extends React.Component {
 
   onSubmit = event => {
     event.preventDefault();
-    const id = this.props.match.params.id;
 
     this.props.createComment({
       author: this.state.author,
       text: this.state.text,
-      ticketId: id
+      ticketId: this.props.passedTicketId,
+      eventId: this.props.passedEventId
     });
 
     this.setState({
       author: "",
       text: "",
-      ticketId: ""
+      ticketId: "",
+      eventId: ""
     });
   };
 
@@ -53,14 +46,15 @@ class CommentContainer extends React.Component {
       return (
         <div>
           <h3>
-            author: {comment.author} comment: {comment.text} user id:{" "}
+            author:{comment.author} comment: {comment.text} user id:{" "}
             {comment.userId}
           </h3>
         </div>
       );
     });
-
-    if (this.props.loggedInUser) {
+    if (!this.props.comments) {
+      return <div>LOADING</div>;
+    } else if (this.props.loggedInUser) {
       return (
         <main>
           <h3>create a new comment here</h3>
@@ -69,13 +63,14 @@ class CommentContainer extends React.Component {
             onChange={this.onChange}
             values={this.state}
           />
+          <h3>comments</h3>
           {commentList}
         </main>
       );
     } else {
       return (
         <main>
-          <h3>These are the comments for this ticket</h3>
+          <h3>Comments, if you want to say something log in</h3>
           {commentList}
         </main>
       );
@@ -85,10 +80,7 @@ class CommentContainer extends React.Component {
 
 const mapDispatchToProps = {
   createComment,
-  getComments,
-  getTickets,
-  getUsers,
-  getEvents
+  getComments
 };
 
 function mapStateToProps(state) {

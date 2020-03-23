@@ -16,10 +16,10 @@ export default class Form extends React.Component {
             />
           </label>
           <label>
-            comment
+            text
             <input
-              placeholder="comment"
-              name="comment"
+              placeholder="text"
+              name="text"
               value={this.props.values.text}
               onChange={this.props.onChange}
               type="text"
